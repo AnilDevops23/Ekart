@@ -58,7 +58,7 @@ pipeline {
         }  
       }
     }
-   stage('Container Build and Push') {
+   stage('Container Deploy') {
       steps {
         withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
           //Deploy conatiner
