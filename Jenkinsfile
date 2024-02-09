@@ -1,5 +1,5 @@
 pipeline {
-  aget { label 'jenkins-slave}
+  aget { label 'jenkins-slave' }
   tools {
     jdk 'jdk17'
     maven 'maven33'
