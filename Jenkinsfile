@@ -48,5 +48,15 @@ pipeline {
                 waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
       }
     }
+    stage('Container Build and Push') {
+      steps {
+        withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+          //container build and push into docker hub
+          sh " docker build -t ekart:latest -f docker/Dockerfile "
+        
+        }  
+      }
+    }
+    
   }
 }
