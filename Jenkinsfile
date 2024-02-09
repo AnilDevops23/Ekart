@@ -52,7 +52,7 @@ pipeline {
       steps {
         withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
           //container build and push into docker hub
-          sh " docker build -t ekart:latest -f docker/Dockerfile "
+          sh " docker build -t ekart:latest -f docker/Dockerfile . "
         
         }  
       }
