@@ -17,5 +17,11 @@ pipeline {
           git branch: 'main', credentialsId: 'github', url: 'https://github.com/AnilDevops23/Ekart.git'   
       }
     }
+    stage('Code Compile') {
+      steps {
+         //  compile code using Maven Tool
+          sh 'mvn compile -DskipTests=true'   
+      }
+    }
   }
 }
