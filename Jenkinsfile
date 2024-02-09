@@ -4,6 +4,9 @@ pipeline {
     jdk 'jdk17'
     maven 'maven33'
   }
+  environment {
+    SCANNER-HOME = tool 'sonar-scanner'
+  }
   stages {
     stage('Clean Workspace') {
       steps {
@@ -27,6 +30,16 @@ pipeline {
       steps {
          //  Build the code using Maven Tool
           sh 'mvn clean package -DskipTests=true'   
+      }
+    }
+    stage('Code analysis') {
+      steps {
+         //  Analyze the code using Sonarqube
+           withSonarQubeEnv(credentialsId: 'sonar-token') {
+                sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Ekart \
+                       -Dsonar.java.binaries=. \
+                       -Dsonar.projectkey=Ekart '''
+           }   
       }
     }
   }
