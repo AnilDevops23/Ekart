@@ -11,5 +11,11 @@ pipeline {
                 cleanWs()
       }
     }
+    stage('SCM Checkout') {
+      steps {
+         //  checkout the code from SCM
+          git branch: 'main', credentialsId: 'github', url: 'https://github.com/AnilDevops23/Ekart.git'   
+      }
+    }
   }
 }
