@@ -23,5 +23,11 @@ pipeline {
           sh 'mvn compile -DskipTests=true'   
       }
     }
+    stage('Code build') {
+      steps {
+         //  Build the code using Maven Tool
+          sh 'mvn clean package -DskipTests=true'   
+      }
+    }
   }
 }
