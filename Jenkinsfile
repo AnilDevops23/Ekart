@@ -58,6 +58,14 @@ pipeline {
         }  
       }
     }
+   stage('Container Build and Push') {
+      steps {
+        withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+          //Deploy conatiner
+          sh "docker run -d --name ekart -p 8070:8070 anildevops23/ekart:latest"
+        }  
+      }
+    }
     
   }
 }
