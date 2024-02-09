@@ -38,7 +38,7 @@ pipeline {
            withSonarQubeEnv('sonarqube-server') {
                 sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Ekart \
                        -Dsonar.java.binaries=. \
-                       -Dsonar.projectkey=Ekart '''
+                       -Dsonar.projectKey=Ekart '''
            }   
       }
     }
