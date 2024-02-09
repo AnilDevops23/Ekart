@@ -35,7 +35,7 @@ pipeline {
     stage('Code analysis') {
       steps {
          //  Analyze the code using Sonarqube
-           withSonarQubeEnv(credentialsId: 'sonar-token') {
+           withSonarQubeEnv('sonarqube-server') {
                 sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Ekart \
                        -Dsonar.java.binaries=. \
                        -Dsonar.projectkey=Ekart '''
